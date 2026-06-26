@@ -1,0 +1,12 @@
+{
+  "name": "v3tsnode",
+  "version": "1.0.0",
+  "description": "Vue3 / TypeScript / Node.js / Express / MySQL 中高级技术知识库（含 Markdown 文档与浏览器阅读器）",
+  "type": "module",
+  "scripts": {
+    "start": "node serve.js",
+    "serve": "node serve.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

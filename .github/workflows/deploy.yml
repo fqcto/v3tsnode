@@ -1,0 +1,59 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch: # 允许手动触发
+
+# 让本 workflow 拿到部署 Pages 所需权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同时只允许一个部署进行；新提交会取消正在排队的旧部署
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # ───────── 1. 构建产物 ─────────
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 这是一个纯静态站点（HTML + MD + CDN 脚本），不需要 npm install / 编译。
+      # 这里只做：把要发布的文件挑出来，放到 dist/ 目录。
+      - name: Assemble static site
+        run: |
+          mkdir -p dist
+          cp index.html dist/
+          cp -r docs dist/
+          cp README.md dist/ 2>/dev/null || true
+          # 防止 GitHub Pages 走 Jekyll 处理（避免下划线开头文件等被忽略）
+          touch dist/.nojekyll
+          echo "── dist 目录内容 ──"
+          ls -la dist
+          ls -la dist/docs
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  # ───────── 2. 部署到 Pages ─────────
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
