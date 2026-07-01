@@ -546,7 +546,10 @@
       const sub = location.hash.split('#').slice(2).join('#')
       if (sub) {
         const el = document.getElementById(decodeURIComponent(sub))
-        el && el.scrollIntoView()
+        if (el) {
+          const absTop = el.getBoundingClientRect().top - $main.getBoundingClientRect().top + $main.scrollTop
+          $main.scrollTo({ top: Math.max(0, absTop - 20), behavior: 'smooth' })
+        }
       }
     } else {
       $main.scrollTop = 0
@@ -583,6 +586,8 @@ python -m http.server 8080
     const hs = $main.querySelectorAll('h2, h3, h4')
     $toc.innerHTML = ''
     tocLinks = []
+    // 记录此刻 $main 顶部位置，用于计算各标题在滚动容器内的绝对偏移
+    const mainTop = $main.getBoundingClientRect().top
     hs.forEach(h => {
       const a = document.createElement('a')
       a.href = '#' + location.hash.split('#')[1] + '#' + h.id
@@ -590,22 +595,26 @@ python -m http.server 8080
       a.textContent = h.textContent.replace(/#$/, '')
       a.onclick = ev => {
         ev.preventDefault()
-        h.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        // 修复：直接滚动 $main 容器而非调用 scrollIntoView（后者在 grid 布局中滚的是 window）
+        // getBoundingClientRect().top 是相对视口的，减去 $main 顶部再加 scrollTop = 在容器内的绝对位置
+        const absTop = h.getBoundingClientRect().top - $main.getBoundingClientRect().top + $main.scrollTop
+        $main.scrollTo({ top: Math.max(0, absTop - 20), behavior: 'smooth' })
         history.replaceState(null, '', a.getAttribute('href'))
       }
       $toc.appendChild(a)
-      tocLinks.push({ a, el: h })
+      // 修复：缓存标题在 $main 内的绝对 top，避免用 offsetTop（offsetTop 相对 offsetParent，非 $main）
+      tocLinks.push({ a, el: h, top: h.getBoundingClientRect().top - mainTop + $main.scrollTop })
     })
   }
 
   // ---- 滚动联动 ----
   $main.addEventListener('scroll', () => {
-    const top = $main.scrollTop
+    const scrollTop = $main.scrollTop
     const max = $main.scrollHeight - $main.clientHeight
-    $prog.style.transform = `scaleX(${max > 0 ? top / max : 0})`
+    $prog.style.transform = `scaleX(${max > 0 ? scrollTop / max : 0})`
     let active = null
-    for (const { a, el } of tocLinks) {
-      if (el.offsetTop - 80 <= top) active = a
+    for (const { a, top } of tocLinks) {
+      if (top - 80 <= scrollTop) active = a
       else break
     }
     tocLinks.forEach(({ a }) => a.classList.toggle('active', a === active))
