@@ -1,7 +1,7 @@
 # v3tsnode · 初 → 中 → 高 全阶段技术知识库
 
-> 一份**面向初级、中级、高级开发者**的本地离线学习手册。
-> 覆盖 **前端基础（HTML5 / CSS3 / JavaScript）→ 框架与语言（Vue 3 / TypeScript）→ 后端与数据库（Node.js / Express / MySQL）→ 多端与小程序（微信小程序原生 / uni-app）** 共 **10 份**核心文档。
+> 一份**面向全栈偏前端开发者**的本地离线学习手册。
+> 覆盖 **前端基础 → 框架与语言 → Node.js 后端（Express / Koa / NestJS）→ 数据库与缓存（MySQL / MongoDB / Redis）→ DevOps（Docker）→ 多端小程序** 共 **15 份**核心文档。
 > 每份文档统一使用 `🟢 初级入门 → 🟡 中级进阶 → 🔴 高级实战` 三段式结构，章节标题带**难度徽章**，代码可直接复制运行。
 
 ## 📂 目录结构
@@ -20,10 +20,17 @@ v3tsnode/
    # ⚡ 框架 & 语言（中 → 高）
    ├─ vue3.md           # Vue 3：入门 → 响应式源码 / 编译优化 / Pinia / SSR
    ├─ typescript.md     # TypeScript：入门 → 泛型 / infer / 类型体操
-   # 🛠️ 后端 & 数据库
+   # 🛠️ Node.js 后端
    ├─ nodejs.md         # Node.js：入门 → 事件循环 / 流 / Worker / 性能
    ├─ express.md        # Express：入门 → 中间件 / 安全 / SSE / TS 集成
+   ├─ koa.md            # Koa：洋葱模型 / JWT / 路由模块化 / 校验 / 安全
+   ├─ nestjs.md         # NestJS：装饰器 / DI / 守卫 / 拦截器 / TypeORM / Swagger
+   # 🗄️ 数据库 & 缓存
    ├─ mysql.md          # MySQL：CRUD → InnoDB / MVCC / 锁 / 调优 / 分库分表
+   ├─ mongodb.md        # MongoDB：文档模型 / Mongoose / 聚合管道 / Atlas
+   ├─ redis.md          # Redis：5种数据类型 / 缓存策略三件套 / 限流 / 排行榜
+   # 🐳 DevOps & 运维
+   ├─ docker.md         # Docker：容器 / Dockerfile / Compose / 镜像优化 / CI/CD
    # 📱 多端 & 小程序
    ├─ wxmini.md         # 微信小程序原生：入门 → 分包 / Skyline / 云开发 / 性能
    └─ uniapp.md         # uni-app 多端：入门 → 条件编译 / nvue / renderjs / uni-app x
@@ -64,9 +71,9 @@ python -m http.server 8080      # http://localhost:8080
 - **深色模式**：跟随系统 `prefers-color-scheme`
 - **纯前端、零依赖、可离线**：marked + highlight.js 走 jsDelivr CDN
 
-## 🧭 三阶段学习路线
+## 🧭 全栈偏前端学习路线（15 份文档）
 
-### 🟢 初级（0 → 1，能独立写基础 CRUD 页面）
+### 🟢 初级（0 → 1，能独立写带后端的 CRUD 页面）
 | 主题 | 关键点 |
 | --- | --- |
 | HTML5 | 标签基础、表单、a11y、Meta |
@@ -76,11 +83,16 @@ python -m http.server 8080      # http://localhost:8080
 | TypeScript | 基本类型、interface / type、函数、类 |
 | Node.js | REPL、fs、path、http、CommonJS |
 | Express | Hello World、路由、中间件基础、REST 案例 |
+| **Koa** | 洋葱模型、ctx、路由、中间件编写、错误处理 |
+| **NestJS** | CLI 创建项目、Controller / Service / Module、DTO 校验 |
 | MySQL | 数据库/表操作、CRUD、WHERE/GROUP BY、JOIN 入门 |
+| **MongoDB** | 文档模型、CRUD、Mongoose 基础、Node.js 集成 |
+| **Redis** | 5种数据类型命令、TTL/过期策略、ioredis 基础 |
+| **Docker** | 镜像/容器概念、常用命令、Dockerfile 基础、docker-compose 入门 |
 | 微信小程序 | 页面结构、生命周期、setData、路由、常用组件 |
 | uni-app | pages.json、生命周期、条件编译、组件 |
 
-### 🟡 中级（1 → 3 年，能架构模块、独立带项目）
+### 🟡 中级（1 → 3 年，能独立设计后端架构、多端交付）
 | 主题 | 关键点 |
 | --- | --- |
 | HTML5 | 语义化、表单校验、Storage、Canvas、iframe 通信 |
@@ -90,11 +102,16 @@ python -m http.server 8080      # http://localhost:8080
 | TypeScript | 泛型、映射类型、keyof / typeof、类型守卫、工具类型 |
 | Node.js | 模块系统、异步、错误处理、常用核心模块 |
 | Express | 中间件、Router、Cookie/Session/JWT、TS 集成 |
+| **Koa** | JWT 鉴权、路由模块化、统一响应、参数校验、安全 |
+| **NestJS** | 守卫/拦截器/管道、TypeORM、JWT 全流程、Swagger |
 | MySQL | 索引原理、事务、常用函数、备份恢复 |
+| **MongoDB** | 聚合管道、populate 关联、事务、性能优化 |
+| **Redis** | 缓存策略三件套、持久化 RDB/AOF、接口限流、排行榜 |
+| **Docker** | 多阶段构建、Volume/网络、Compose 编排全栈项目 |
 | 微信小程序 | 自定义组件、Behaviors、登录鉴权、分包、支付 |
 | uni-app | easycom、Pinia、请求封装、组件库选型、WebSocket |
 
-### 🔴 高级（3 年+，能定位性能瓶颈、参与架构设计）
+### 🔴 高级（3 年+，性能瓶颈定位 + 架构设计）
 | 主题 | 关键点 |
 | --- | --- |
 | HTML5 | Web Components、Service Worker、IndexedDB、CSP |
@@ -102,13 +119,17 @@ python -m http.server 8080      # http://localhost:8080
 | JavaScript | V8/GC、Proxy 响应式、手写系列、内存排查 |
 | Vue 3 | 响应式源码、编译优化（PatchFlag / Block Tree）、SSR |
 | TypeScript | 条件类型 + `infer`、协变逆变、装饰器、类型体操 |
-| Node.js | 事件循环 6 阶段、Stream 背压、Cluster/Worker、AsyncLocalStorage |
-| Express | 中间件链原理、错误模型、流式上传/SSE、Express 5 变更 |
-| MySQL | InnoDB 物理结构、MVCC、锁规则、redo/undo/binlog、深分页、分库分表 |
-| 微信小程序 | Skyline、性能优化、云开发、setData 深度优化 |
-| uni-app | nvue / renderjs / uni-app x、平台差异陷阱、CI/CD |
+| Node.js | 事件循环 6 阶段、Stream 背压、Cluster/Worker |
+| Koa | compose 源码解析、TS 项目脚手架 |
+| NestJS | 动态模块、微服务 Transport |
+| MySQL | InnoDB / MVCC / 锁 / redo/undo/binlog / 分库分表 |
+| MongoDB | 副本集 / 分片 / WiredTiger |
+| Redis | 主从复制 / 哨兵 / Cluster 分片 |
+| Docker | CI/CD 集成、安全最佳实践 |
+| 微信小程序 | Skyline、性能优化、云开发 |
+| uni-app | nvue / renderjs / uni-app x、CI/CD |
 
-## 📌 文档要点速览
+## 📌 文档要点速览（15 份）
 
 - **HTML5**：标签基础 → 语义化 & 表单校验 → Web Components / PWA / Service Worker / 安全 CSP
 - **CSS3**：选择器盒模型 → Flex/Grid/响应式 → 容器查询 `@container` / `:has()` / Houdini / 硬件加速
@@ -117,7 +138,12 @@ python -m http.server 8080      # http://localhost:8080
 - **TypeScript**：基本类型/interface → 泛型/工具类型/守卫 → 条件类型/infer/协变逆变/类型体操
 - **Node.js**：fs/http/CJS → 模块系统/异步/常用模块 → 事件循环 6 阶段 / 流背压 / Worker / 可观测性
 - **Express**：Hello World / REST → 中间件 / JWT / TS → 中间件链原理 / SSE / 安全清单 / Express 5
+- **Koa**：洋葱模型 → JWT / 路由模块化 / 参数校验 / 安全 → compose 源码 / TS 脚手架
+- **NestJS**：CLI / Controller / Module → 守卫 / 拦截器 / TypeORM / JWT / Swagger → 动态模块 / 微服务
 - **MySQL**：CRUD / JOIN → 索引 / 事务 → InnoDB / MVCC / 锁 / redo/undo/binlog / 分库分表
+- **MongoDB**：文档模型 / Mongoose / CRUD → 聚合管道 / 事务 / 性能优化 → 副本集 / 分片
+- **Redis**：5种数据类型 / ioredis → 缓存策略 / 穿透击穿雪崩 / 限流 / 排行榜 → 主从 / 哨兵 / Cluster
+- **Docker**：镜像/容器/Dockerfile → 多阶段构建 / Volume / Compose 编排 → CI/CD / 安全
 - **微信小程序**：结构 / 生命周期 → 组件 / 登录 / 分包 → Skyline / 性能 / 云开发 / 面试题
 - **uni-app**：跨端结构 / 生命周期 → easycom / Pinia / 请求封装 → 条件编译 / nvue / renderjs / uni-app x
 

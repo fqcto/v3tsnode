@@ -367,7 +367,7 @@
 <body>
 <header>
   <span class="logo">📚 v3tsnode</span>
-  <span class="badge" id="docTitleBadge">前端基础 / 框架 / 后端 / 多端 · 初 → 中 → 高</span>
+  <span class="badge" id="docTitleBadge">前端 / Vue / Node / Koa / NestJS / MySQL / MongoDB / Redis / Docker / 小程序 · 初 → 中 → 高</span>
   <div class="spacer"></div>
   <input id="search" type="search" placeholder="🔍 搜索当前文档…" />
   <a href="https://marked.js.org/" target="_blank" rel="noreferrer">marked</a>
@@ -379,8 +379,8 @@
   <div id="docList"></div>
   <h3>🚀 关于</h3>
   <div style="padding:8px 12px;font-size:12px;color:var(--fg-dim);line-height:1.7">
-    本知识库覆盖 <strong style="color:var(--fg)">初级 → 中级 → 高级</strong> 全阶段路线，
-    含 HTML5 / CSS3 / JS / Vue / TS / Node / Express / MySQL / 小程序 / uni-app。<br/><br/>
+    本知识库覆盖 <strong style="color:var(--fg)">初级 → 中级 → 高级</strong> 全阶段路线，<br/>
+    含 HTML5 / CSS3 / JS / Vue3 / TS / Node.js / Express / <strong style="color:var(--accent)">Koa / NestJS</strong> / MySQL / <strong style="color:var(--accent)">MongoDB / Redis / Docker</strong> / 小程序 / uni-app，共 <strong style="color:var(--fg)">15 份</strong>核心文档。<br/><br/>
     💡 双击 <code>index.html</code> 打开；<br/>
     若 Markdown 加载失败，请改用本地服务器（见下方报错提示）。
   </div>
@@ -398,7 +398,7 @@
 </aside>
 
 <script>
-  // 按【分组】组织文档：前端基础 → 框架/语言 → 后端 → 多端
+  // 按【分组】组织文档：前端基础 → 框架/语言 → 后端 → 数据库/缓存 → DevOps → 多端
   const GROUPS = [
     {
       title: '🌐 前端基础（初 → 高）',
@@ -416,11 +416,26 @@
       ],
     },
     {
-      title: '🛠️ 后端 & 数据库',
+      title: '🛠️ Node.js 后端',
       docs: [
         { id: 'nodejs',     file: 'docs/nodejs.md',     label: 'Node.js',     icon: 'N', meta: '入门 → 事件循环 / 流 / 性能' },
         { id: 'express',    file: 'docs/express.md',    label: 'Express',     icon: 'E', meta: '入门 → 中间件 / 安全 / SSE' },
+        { id: 'koa',        file: 'docs/koa.md',        label: 'Koa',         icon: 'K', meta: '洋葱模型 / JWT / 路由模块化' },
+        { id: 'nestjs',     file: 'docs/nestjs.md',     label: 'NestJS',      icon: '🏗', meta: '装饰器 / DI / 模块 / 守卫 / Swagger' },
+      ],
+    },
+    {
+      title: '🗄️ 数据库 & 缓存',
+      docs: [
         { id: 'mysql',      file: 'docs/mysql.md',      label: 'MySQL',       icon: 'M', meta: '入门 → InnoDB / MVCC / 调优' },
+        { id: 'mongodb',    file: 'docs/mongodb.md',    label: 'MongoDB',     icon: '🍃', meta: '文档模型 / Mongoose / 聚合管道' },
+        { id: 'redis',      file: 'docs/redis.md',      label: 'Redis',       icon: 'R', meta: '5种数据类型 / 缓存策略 / 限流' },
+      ],
+    },
+    {
+      title: '🐳 DevOps & 运维',
+      docs: [
+        { id: 'docker',     file: 'docs/docker.md',     label: 'Docker',      icon: '🐳', meta: '容器 / Compose / 镜像优化 / CI/CD' },
       ],
     },
     {
