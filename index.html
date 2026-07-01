@@ -661,9 +661,42 @@ python -m http.server 8080
   // ---- 路由 ----
   function route() {
     const hash = location.hash || '#/vue3'
+
+    // 文档导航格式：#/docid 或 #/docid#anchor
+    // 页内锚点格式：#anchor-id（无前置 /），不触发文档重载，直接滚动
+    if (!hash.startsWith('#/')) {
+      const anchorId = decodeURIComponent(hash.slice(1))
+      const el = document.getElementById(anchorId)
+      if (el) {
+        const absTop = el.getBoundingClientRect().top - $main.getBoundingClientRect().top + $main.scrollTop
+        $main.scrollTo({ top: Math.max(0, absTop - 20), behavior: 'smooth' })
+      }
+      return
+    }
+
     const id = hash.split('#')[1]?.replace(/^\//, '') || 'vue3'
     loadDoc(id)
   }
+
+  // 拦截文章内部的页内锚点点击，阻止 hashchange 触发路由，改为直接滚动
+  $main.addEventListener('click', ev => {
+    const a = ev.target.closest('a[href]')
+    if (!a) return
+    const href = a.getAttribute('href')
+    // 只处理纯页内锚点（以 # 开头且不是 #/docid 格式）
+    if (!href.startsWith('#') || href.startsWith('#/')) return
+    ev.preventDefault()
+    const anchorId = decodeURIComponent(href.slice(1))
+    const el = document.getElementById(anchorId)
+    if (el) {
+      const absTop = el.getBoundingClientRect().top - $main.getBoundingClientRect().top + $main.scrollTop
+      $main.scrollTo({ top: Math.max(0, absTop - 20), behavior: 'smooth' })
+      // 更新 URL 但不触发 hashchange（使用 replaceState）
+      const docHash = location.hash.split('#')[1] || '/vue3'
+      history.replaceState(null, '', `#${docHash}#${anchorId}`)
+    }
+  })
+
   window.addEventListener('hashchange', route)
   route()
 </script>
