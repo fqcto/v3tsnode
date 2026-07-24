@@ -7,8 +7,8 @@
 一份面向「全栈偏前端」开发者的本地离线学习手册  
 覆盖从前端基础到后端服务、数据库、缓存、容器化的完整技能树
 
-[![文档数量](https://img.shields.io/badge/文档-15份-blue)](#-文档总览)
-[![总行数](https://img.shields.io/badge/总行数-27464行-green)](#-文档总览)
+[![文档数量](https://img.shields.io/badge/文档-16份-blue)](#-文档总览)
+[![总行数](https://img.shields.io/badge/总行数-28031行-green)](#-文档总览)
 [![三段结构](https://img.shields.io/badge/结构-初→中→高-orange)](#-三段式结构说明)
 [![纯静态](https://img.shields.io/badge/纯静态-零依赖-lightgrey)](#-启动方式)
 
@@ -37,7 +37,7 @@
 
 | 特性 | 说明 |
 | --- | --- |
-| 📂 **分组侧栏** | 6 大技术分组，15 份文档一键切换，当前文档高亮 |
+| 📂 **分组侧栏** | 7 大技术分组，16 份文档一键切换，当前文档高亮 |
 | 📑 **自动大纲** | 右侧 TOC 由 H2/H3/H4 自动生成，滚动时联动高亮 |
 | 🔍 **全文搜索** | 顶部搜索框实时高亮命中词，自动滚动到首个结果 |
 | 🏷️ **难度徽章** | 每节标题带 `🟢 初级 / 🔵 中级 / 🔴 高级` 彩色胶囊 |
@@ -86,14 +86,14 @@
 
 ```
 v3tsnode/
-├─ index.html               # 浏览器阅读入口（6组侧栏 + 大纲 + 搜索 + 徽章）
+├─ index.html               # 浏览器阅读入口（7组侧栏 + 大纲 + 搜索 + 徽章）
 ├─ serve.js                 # 零依赖本地静态服务器（Node.js 原生）
 ├─ package.json
 ├─ README.md
 ├─ .github/
 │  └─ workflows/
 │     └─ deploy.yml         # GitHub Pages 自动部署 CI/CD
-└─ docs/                    # 15 份 Markdown 文档
+└─ docs/                    # 16 份 Markdown 文档
    │
    │  # 🌐 前端基础（初 → 高）
    ├─ html5.md              # HTML5：语义化 / 表单 / 多媒体 / Web Components / PWA / CSP
@@ -103,6 +103,9 @@ v3tsnode/
    │  # ⚡ 框架 & 语言（中 → 高）
    ├─ vue3.md               # Vue 3：入门 → 响应式源码 / 编译优化 / Pinia / SSR
    ├─ typescript.md         # TypeScript：入门 → 泛型 / infer / 协变逆变 / 类型体操
+   │
+   │  # 🧩 微前端 & 架构
+   ├─ qiankun.md            # qiankun：微前端概念 / 生命周期 / 沙箱 / 样式隔离 / 全局状态 / Vite 接入 / 面试
    │
    │  # 🛠️ Node.js 后端
    ├─ nodejs.md             # Node.js：入门 → 事件循环 / Stream / Worker / 性能
@@ -127,7 +130,7 @@ v3tsnode/
 
 ## 📚 文档总览
 
-共 **15 份**文档，**27,464 行**，按难度均分为三段式结构。
+共 **16 份**文档，**28,031 行**，按难度均分为三段式结构。
 
 | # | 文档 | 所属分组 | 行数 | 难度 | 核心关键词 |
 |---|------|----------|------|------|-----------|
@@ -136,16 +139,17 @@ v3tsnode/
 | 3 | `javascript.md` | 🌐 前端基础 | 2,328 | 初→高 | 闭包、原型链、Promise、EventLoop、手写、V8 |
 | 4 | `vue3.md` | ⚡ 框架语言 | 2,694 | 中→高 | 组合式API、Pinia、响应式源码、PatchFlag、SSR |
 | 5 | `typescript.md` | ⚡ 框架语言 | 1,948 | 中→高 | 泛型、infer、工具类型、协变逆变、类型体操 |
-| 6 | `nodejs.md` | 🛠️ Node后端 | 1,806 | 初→高 | 事件循环6阶段、Stream背压、Cluster、Worker |
-| 7 | `express.md` | 🛠️ Node后端 | 1,730 | 初→高 | 中间件链、Router、JWT、SSE、Express 5 |
-| 8 | `koa.md` | 🛠️ Node后端 | 1,221 | 初→高 | 洋葱模型、ctx、JWT、compose源码、TS脚手架 |
-| 9 | `nestjs.md` | 🛠️ Node后端 | 1,508 | 初→高 | 装饰器、DI、守卫、拦截器、TypeORM、Swagger |
-| 10 | `mysql.md` | 🗄️ 数据库缓存 | 1,688 | 初→高 | 索引、事务、InnoDB、MVCC、锁、redo/undo、分库分表 |
-| 11 | `mongodb.md` | 🗄️ 数据库缓存 | 1,886 | 初→高 | Mongoose、聚合管道、事务、Change Streams、副本集 |
-| 12 | `redis.md` | 🗄️ 数据库缓存 | 1,616 | 初→高 | 5种数据类型、缓存策略三件套、限流、排行榜、哨兵 |
-| 13 | `docker.md` | 🐳 DevOps | 1,732 | 初→高 | Dockerfile、多阶段构建、Compose编排、CI/CD |
-| 14 | `wxmini.md` | 📱 多端小程序 | 2,055 | 初→高 | 双线程、setData、分包、Skyline、云开发、隐私协议 |
-| 15 | `uniapp.md` | 📱 多端小程序 | 1,406 | 初→高 | 条件编译、nvue、renderjs、uni-app x、CI/CD |
+| 6 | `qiankun.md` | 🧩 微前端架构 | 567 | 初→高 | 微前端、生命周期、JS沙箱、样式隔离、globalState、Vite接入 |
+| 7 | `nodejs.md` | 🛠️ Node后端 | 1,806 | 初→高 | 事件循环6阶段、Stream背压、Cluster、Worker |
+| 8 | `express.md` | 🛠️ Node后端 | 1,730 | 初→高 | 中间件链、Router、JWT、SSE、Express 5 |
+| 9 | `koa.md` | 🛠️ Node后端 | 1,221 | 初→高 | 洋葱模型、ctx、JWT、compose源码、TS脚手架 |
+| 10 | `nestjs.md` | 🛠️ Node后端 | 1,508 | 初→高 | 装饰器、DI、守卫、拦截器、TypeORM、Swagger |
+| 11 | `mysql.md` | 🗄️ 数据库缓存 | 1,688 | 初→高 | 索引、事务、InnoDB、MVCC、锁、redo/undo、分库分表 |
+| 12 | `mongodb.md` | 🗄️ 数据库缓存 | 1,886 | 初→高 | Mongoose、聚合管道、事务、Change Streams、副本集 |
+| 13 | `redis.md` | 🗄️ 数据库缓存 | 1,616 | 初→高 | 5种数据类型、缓存策略三件套、限流、排行榜、哨兵 |
+| 14 | `docker.md` | 🐳 DevOps | 1,732 | 初→高 | Dockerfile、多阶段构建、Compose编排、CI/CD |
+| 15 | `wxmini.md` | 📱 多端小程序 | 2,055 | 初→高 | 双线程、setData、分包、Skyline、云开发、隐私协议 |
+| 16 | `uniapp.md` | 📱 多端小程序 | 1,406 | 初→高 | 条件编译、nvue、renderjs、uni-app x、CI/CD |
 
 > 每份文档结构统一：`## 一、🟢 初级入门` → `## 二、🟡 中级进阶` → `## 三、🔴 高级实战`
 
@@ -207,6 +211,7 @@ Week 19+    各技术高级章节，结合实战项目深化
 | JavaScript | 变量类型、数组/对象方法、DOM 操作、fetch 异步 |
 | Vue 3 | 模板语法、指令、v-model、组件通信、Vue Router 基础 |
 | TypeScript | 基本类型、interface / type 别名、函数类型、类 |
+| qiankun | 微前端概念、主/子应用、生命周期、activeRule、一键启动 Demo |
 | Node.js | fs / path / http 模块、CommonJS 模块系统 |
 | Express | Hello World、路由、中间件基础、完整 REST API |
 | Koa | 洋葱模型、ctx 对象、路由、中间件编写、错误处理 |
@@ -229,6 +234,7 @@ Week 19+    各技术高级章节，结合实战项目深化
 | JavaScript | 闭包、this/call/apply/bind、原型链、Promise / async-await、事件循环 |
 | Vue 3 | 组合式 API、Composables 复用、Pinia 状态管理、性能优化技巧 |
 | TypeScript | 泛型、映射类型、keyof / typeof、类型守卫、工具类型（Partial/Pick/Omit） |
+| qiankun | vite-plugin-qiankun 接入、initGlobalState 通信、沙箱与样式隔离、常见坑 |
 | Node.js | 模块系统原理、异步模式、错误处理、常用内置模块 |
 | Express | 中间件链路设计、Router 模块化、JWT 鉴权、Cookie/Session |
 | Koa | JWT 完整鉴权、路由模块化、统一响应格式、参数校验、安全清单 |
@@ -251,6 +257,7 @@ Week 19+    各技术高级章节，结合实战项目深化
 | JavaScript | V8 引擎/GC、Proxy 实现响应式、手写系列（Promise/深拷贝/防抖节流）、内存排查 |
 | Vue 3 | 响应式系统源码（track/trigger）、编译优化（PatchFlag/Block Tree）、SSR/SSG |
 | TypeScript | 条件类型 + `infer`、协变逆变、装饰器元编程、复杂类型体操 |
+| qiankun | import-html-entry 加载流程、JS 沙箱（快照/Proxy）原理、Shadow DOM vs 前缀隔离、面试题 |
 | Node.js | 事件循环 6 阶段、Stream 背压与 pipeline、Cluster/Worker 线程、AsyncLocalStorage |
 | Express | 中间件链原理（洋葱 compose）、流式上传/SSE、安全清单、Express 5 变化 |
 | Koa | compose 函数源码解读、完整 TypeScript 项目脚手架 |
@@ -298,6 +305,16 @@ Week 19+    各技术高级章节，结合实战项目深化
 `初级` 基本类型 / interface vs type / 函数 / 类  
 `中级` 泛型 / 映射类型 / 工具类型 / 类型守卫 / keyof/typeof  
 `高级` 条件类型 + infer / 协变逆变 / 装饰器元编程 / 类型体操
+
+</details>
+
+<details>
+<summary>🧩 微前端 & 架构（1份）</summary>
+
+**qiankun**（567 行）  
+`初级` 微前端概念 / 方案对比 / 主子应用 / 生命周期 / activeRule / 一键启动 Demo  
+`中级` vite-plugin-qiankun 接入 / initGlobalState 通信 / JS 沙箱 + 样式隔离 + 路由隔离 / 常见坑  
+`高级` import-html-entry 加载流程 / 沙箱三种模式与边界 / Shadow DOM vs 选择器前缀 / 面试题
 
 </details>
 
